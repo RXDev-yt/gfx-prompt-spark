@@ -19,7 +19,7 @@ export function Gallery({ items = artwork }: { items?: Artwork[] }) {
   return <><div className={`art-grid ${items.length > 4 ? 'work-grid' : ''}`}>{items.map((item, i) => <article key={item.id} className={`art-item ${item.category === 'Thumbnails' ? 'thumbnail' : ''}`}><Button variant="artwork" aria-label={`View ${item.title}`} onClick={() => setSelected(item)}><img src={item.image} alt={`${item.title} — Roblox ${item.category}`} loading="lazy"/><span className="art-expand"><Expand size={14}/></span></Button><div className="art-caption"><div><h3>{item.title}</h3><p>{item.category === 'GFX' ? 'Character GFX' : 'Roblox thumbnail'}</p></div><span>{String(i + 1).padStart(2, '0')} <ArrowUpRight className="inline ml-2" size={12}/></span></div></article>)}</div><Dialog open={selected !== null} onOpenChange={open => { if (!open) setSelected(null); }}><DialogContent className="viewer">{selected && <><DialogTitle>{selected.title}</DialogTitle><DialogDescription>RXDev · {selected.category}</DialogDescription><img className="viewer-image" src={selected.image} alt={selected.title}/></>}</DialogContent></Dialog></>;
 }
 export function Hero() {
-  return <section className="hero container-wide"><img className="hero-art hero-art-one" src={artwork[2].image} alt="White-haired Roblox character GFX"/><img className="hero-art hero-art-two" src={artwork[0].image} alt="Purple Roblox character GFX"/><img className="hero-art hero-art-three" src={artwork[1].image} alt="Roblox character with headphones"/><img className="hero-art hero-art-four" src={artwork[3].image} alt="Monochrome Roblox silhouette GFX"/><div className="hero-copy reveal"><p className="eyebrow"><i/> ROBLOX GFX · THUMBNAILS · UI DESIGN</p><h1 className="hero-title">RX<span>DEV</span><span>.</span></h1><p className="hero-subtitle">A little blocky.<br/>A lot of character.</p><p className="hero-description">Turning Roblox characters into visuals<br/>that don’t just blend in.</p><div className="hero-actions"><Button asChild variant="portfolio" size="lg"><Link to="/work">Explore my work <ArrowUpRight/></Link></Button><Button asChild variant="subtle" size="lg"><Link to="/contact">Let’s talk</Link></Button></div></div><div className="hero-bottom"><span><Globe size={12}/> CZECH REPUBLIC · CREATING WORLDWIDE</span><a href="#selected-work" className="hero-scroll">A little more below <ArrowDown size={14}/></a><span><Sparkles size={12}/> IDEAS INTO PIXELS</span></div></section>;
+  return <section className="hero container-wide"><img className="hero-art hero-art-one" src={artwork[2]?.image} alt="White-haired Roblox character GFX"/><img className="hero-art hero-art-two" src={artwork[0]?.image} alt="Purple Roblox character GFX"/><img className="hero-art hero-art-three" src={artwork[1]?.image} alt="Roblox character with headphones"/><img className="hero-art hero-art-four" src={artwork[3]?.image} alt="Monochrome Roblox silhouette GFX"/><div className="hero-copy reveal"><p className="eyebrow"><i/> ROBLOX GFX · THUMBNAILS · UI DESIGN</p><h1 className="hero-title">RX<span>DEV</span><span>.</span></h1><p className="hero-subtitle">A little blocky.<br/>A lot of character.</p><p className="hero-description">Turning Roblox characters into visuals<br/>that don’t just blend in.</p><div className="hero-actions"><Button asChild variant="portfolio" size="lg"><Link to="/work">Explore my work <ArrowUpRight/></Link></Button><Button asChild variant="subtle" size="lg"><Link to="/contact">Let’s talk</Link></Button></div></div><div className="hero-bottom"><span><Globe size={12}/> CZECH REPUBLIC · CREATING WORLDWIDE</span><a href="#selected-work" className="hero-scroll">A little more below <ArrowDown size={14}/></a><span><Sparkles size={12}/> IDEAS INTO PIXELS</span></div></section>;
 }
 export function MotionStrip() {
   const [paused, setPaused] = useState(false);
@@ -27,7 +27,7 @@ export function MotionStrip() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => el.classList.toggle('offscreen-motion', !entry.isIntersecting));
+    const observer = new IntersectionObserver(([entry]) => el.classList.toggle('offscreen-motion', entry ? !entry.isIntersecting : true));
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -38,7 +38,7 @@ export function MotionManager() {
     const update = () => document.documentElement.classList.toggle('tab-hidden', document.hidden);
     document.addEventListener('visibilitychange', update);
     const hero = document.querySelector('.hero');
-    const observer = new IntersectionObserver(([entry]) => hero?.classList.toggle('offscreen-motion', !entry.isIntersecting));
+    const observer = new IntersectionObserver(([entry]) => hero?.classList.toggle('offscreen-motion', entry ? !entry.isIntersecting : true));
     if (hero) observer.observe(hero);
     return () => { document.removeEventListener('visibilitychange', update); observer.disconnect(); document.documentElement.classList.remove('tab-hidden'); };
   }, []);
