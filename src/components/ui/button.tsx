@@ -9,6 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        portfolio: "bg-primary text-primary-foreground hover:bg-primary/85 rounded-full transition-all hover:-translate-y-0.5",
+        subtle: "border border-border bg-background text-foreground rounded-full hover:bg-accent transition-all hover:-translate-y-0.5",
+        artwork: "art-button focus-visible:ring-2 focus-visible:ring-primary",
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
