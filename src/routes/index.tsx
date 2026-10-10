@@ -8,5 +8,5 @@ export const Route = createFileRoute('/')({
   component: Index,
 });
 function Index() {
-  return <><MotionManager/><Hero/><MotionStrip/><section id="selected-work" className="container-wide section-space"><div className="section-heading"><div><p className="eyebrow"><i/> WORK</p><h2>Selected work<span> /</span></h2></div><Link to="/work" className="text-action">View all work <ArrowUpRight size={16}/></Link></div><Gallery items={artwork.slice(0,4)}/></section><ContactBand/></>;
+  return <><MotionManager/><Hero/><MotionStrip/><section id="selected-work" className="container-wide section-space"><div className="section-heading"><div><h2>Work<span> /</span></h2></div><Link to="/work" className="text-action">All work <ArrowUpRight size={16}/></Link></div><Gallery items={artwork.slice(0,4)}/></section><ContactBand/></>;
 }
