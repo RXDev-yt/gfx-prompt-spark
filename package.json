@@ -4,8 +4,12 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "art": "node scripts/gen-art.mjs",
+    "predev": "node scripts/gen-art.mjs",
     "dev": "vite dev",
+    "prebuild": "node scripts/gen-art.mjs",
     "build": "vite build",
+    "prebuild:dev": "node scripts/gen-art.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
