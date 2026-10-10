@@ -1,21 +1,13 @@
-import earns from '@/assets/earns.png.asset.json';
-import farmer from '@/assets/farmer.png.asset.json';
-import roblox from '@/assets/roblox.png.asset.json';
-import girl from '@/assets/girl.png.asset.json';
-import render from '@/assets/render.png.asset.json';
-import fan13 from '@/assets/fan13.png.asset.json';
-import fan9 from '@/assets/fan9.png.asset.json';
-import avatar from '@/assets/avatar.png.asset.json';
-
-export const profileImage = avatar.url;
+// Artwork lives in /public/art so it is served by the site itself.
+export const profileImage = '/art/rxdev-pfp.jpg';
 export const artwork = [
-  { id: 'purple', title: 'Purple energy', category: 'GFX', image: render.url },
-  { id: 'headphones', title: 'Headphones on', category: 'GFX', image: girl.url },
-  { id: 'monochrome', title: 'Monochrome', category: 'GFX', image: fan13.url },
-  { id: 'silhouette', title: 'In the shadows', category: 'GFX', image: fan9.url },
-  { id: 'offline', title: 'Earns Offline', category: 'Thumbnails', image: earns.url },
-  { id: 'farmer', title: 'Farming Legends', category: 'Thumbnails', image: farmer.url },
-  { id: 'levels', title: 'Level 1 → Level 67', category: 'Thumbnails', image: roblox.url },
+  { id: 'render-1', title: 'Character render 1', category: 'GFX', image: '/art/character-render.jpg' },
+  { id: 'render-2', title: 'Character render 2', category: 'GFX', image: '/art/gfx-girl.jpg' },
+  { id: 'render-3', title: 'Character render 3', category: 'GFX', image: '/art/fan-render-13.jpg' },
+  { id: 'render-4', title: 'Character render 4', category: 'GFX', image: '/art/fan-render-9.jpg' },
+  { id: 'offline', title: 'Earns Offline', category: 'Thumbnails', image: '/art/earns-offline.jpg' },
+  { id: 'farmer', title: 'Farmer', category: 'Thumbnails', image: '/art/farmer.jpg' },
+  { id: 'levels', title: 'Level 1 → Level 67', category: 'Thumbnails', image: '/art/project-thumb.jpg' },
 ];
 export type Artwork = typeof artwork[number];
 export const socials = {
